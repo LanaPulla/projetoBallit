@@ -1,0 +1,21 @@
+:root {
+    --background-color: #121214;
+    --white-color: white;
+    --gray-color:#333232;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Kanit", sans-serif;
+    color: var(--white-color);
+    
+}
+
+body{ 
+    font-weight: 100;
+    background-color: var(--background-color);
+}
+
+

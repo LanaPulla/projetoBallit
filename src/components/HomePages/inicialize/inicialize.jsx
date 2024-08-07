@@ -9,31 +9,30 @@ export function ClickSingUp(setShowForm){
 export function ClickStart(){
 
     console.log("Iniciar Campeonato");
+    const rowsCount = (tableBody) => {
+        const lineCount = tableBody.rows.length;
+        const click = () =>{
+            if ( lineCount < 8 ) {
+                console.log("nao pode");
+            }; if (lineCount > 16) {
+                const myTable= document.getElementById("#myTable");
+                myTable.deleteRow(lineCount - 1)
+                console.log("NAO")
+            }
+        }
+    
+        click();
+        rowsCount(tableBody);
+    }
 
 }
 
-export function ClickAdmin(){
+export function ClickAdmin(tableBody){
 
     console.log("Administrar Campeonato");
 
-
 }
 
-export function rowsCount(tableBody, event){
-    event.preventDefault()
-    const lineCount = tableBody.rows.length;
-    const click = () =>{
-        if ( lineCount < 8 ) {
-            console.log("nao pode");
-        }; if (lineCount > 16) {
-            const myTable= document.getElementById("#myTable");
-            myTable.deleteRow(lineCount - 1)
-            console.log("NAO")
-        }
-    }
-
-    click();
-}
 
 export function Inicialize(){
     const [showForm, setShowForm] = useState(false);
@@ -60,7 +59,7 @@ export function Inicialize(){
 
             form.reset();
             console.log("Número de linhas na tabela:", tableBody.rows.length);
-            rowsCount(tableBody);
+            
         };
 
         
@@ -78,7 +77,7 @@ export function Inicialize(){
                 Cadastrar time
              </button>
        
-            <button className={styles.buttons} onClick={ClickStart}>
+            <button className={styles.buttons} onClick={() => ClickStart()}>
                 Iniciar Campeonato
              </button>
         
@@ -91,11 +90,11 @@ export function Inicialize(){
                 <div className={styles.singUp}>
                    <form role="form" id="form-user-create" onSubmit={formClick}>
                         <label htmlFor="exampleInputTeam">Nome do Time</label>
-                        <input type="text" id="exampleInputTeam" name="team" />
+                        <input type="text" required id="exampleInputTeam" name="team" />
                         <label htmlFor="exampleInputTeamChant">Grito de Guerra</label>
-                        <input type="text" id="exampleInputTeamChant" name="teamchant" />
+                        <input type="text" required id="exampleInputTeamChant" name="teamchant" />
                         <label htmlFor="exampleInputYear">Ano de fundação</label>
-                        <input type="text" id="exampleInputYear" name="year" />
+                        <input type="text" required id="exampleInputYear" name="year" />
                         <button type="submit" id ="myButton">Enviar</button>
                     </form>   
                     

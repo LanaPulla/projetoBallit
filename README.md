@@ -1,9 +1,9 @@
-# React + Vite
+<h1 align="center"> Ballit Championship </h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+Olá! O projeto a seguir foi desenvolvido na linguagem JavaScript, juntamente com as marcações de texto CSS3, HTML5 e a biblioteca React. 
+</p>
+<p align="center">
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# projetoBallit
+</p>

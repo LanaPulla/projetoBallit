@@ -19,23 +19,27 @@ export function ClickAdmin(){
 
 }
 
+export function rowsCount(tableBody, event){
+    event.preventDefault()
+    const lineCount = tableBody.rows.length;
+    const click = () =>{
+        if ( lineCount < 8 ) {
+            console.log("nao pode");
+        }; if (lineCount > 16) {
+            const myTable= document.getElementById("#myTable");
+            myTable.deleteRow(lineCount - 1)
+            console.log("NAO")
+        }
+    }
+
+    click();
+}
+
 export function Inicialize(){
     const [showForm, setShowForm] = useState(false);
 
         const formClick = (event) =>{
             event.preventDefault();
-             
-            const click = () =>{
-                const count = 0;
-                const button = document.getElementById("myButton");
-
-                button.addEventListener('click', () =>{
-                    count++;
-                    console.log(count);
-                })
-
-            }
-
 
             const form = document.querySelector("#form-user-create");
 
@@ -54,10 +58,12 @@ export function Inicialize(){
             colum2.textContent = teamChant;
             colum3.textContent = teamYear;
 
-
             form.reset();
-            console.log(click.count);
+            console.log("Número de linhas na tabela:", tableBody.rows.length);
+            rowsCount(tableBody);
         };
+
+        
 
     return (
         <div className={styles.container}>
@@ -94,7 +100,7 @@ export function Inicialize(){
                     </form>   
                     
                     <div className={styles.tableContainer}>
-                    <table className={styles.table}>
+                    <table id="myTable" className={styles.table}>
                     <thead>
                         <tr>
                             <th className={styles.tab}>Nome do Time</th>

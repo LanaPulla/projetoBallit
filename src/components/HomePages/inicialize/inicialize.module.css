@@ -1,5 +1,5 @@
 .inicialize {
-    font-weight: 100;
+    font-weight: 200;
     font-size: 40px;
     padding: 40px;
 }
@@ -15,7 +15,7 @@
     align-items: center;
     text-align: center;
     border-radius: 15px;
-    border: var(--gray-color);
+    border: none;
     
     
 }
@@ -32,11 +32,12 @@
 }
 
 .singUp{
-    background-color: var(--gray-color);
+    
     font-size: 20px;
     font-weight: 200;
     padding:20px;
     border-radius: 15px;
+    
 }
 
 .singUp input{
@@ -46,20 +47,34 @@
     border-radius: 15px;
     padding: 5px;
     font-size: 15px;
-    border: var(--gray-color);
+    border: none;
 }
+
+.singUp label {
+    font-weight: 350;
+}
+
 
 .singUp button {
     color: var(--background-color);
     border-radius: 12px;
     padding: 5px;
-    border: var(--gray-color);
+    border: none;
+    font-weight: 450;
+
+}
+
+.singUp form{
+    padding:12px;
+    border-radius: 15px;
+    background-color: var(--ligthBlue-color);
 
 }
 
 .tableContainer {
     width: 100%;
     max-height: 400px; 
+    
 }
 
 .table {
@@ -69,13 +84,22 @@
 }
 
 .table th, .table td {
-    padding: 10px;
+    padding: 5px;
     text-align: left;
-    border: 1px solid var(--white-color);  
+    border: 1px solid var(--white-color);
+    background-color: var(--ligthPurple-color);
+   
 
 }
 
-.table th{
-    background-color:rgb(28, 28, 28);
+.table td {
+
+    background-color: var(--ligthPurple-color);
+
 }
+
+
+
+
+
 

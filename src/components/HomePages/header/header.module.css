@@ -1,8 +1,8 @@
 .header {
-    background-color: var(--gray-color);
+    background-color: var(--ligth-color);
     display: flex;
     justify-content: center;
-    padding: 50px;
+    padding: 30px;
 }
 
 .header strong {

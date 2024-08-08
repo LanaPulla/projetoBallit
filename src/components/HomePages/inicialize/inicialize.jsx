@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './inicialize.module.css'; 
    
-export function ClickSingUp(setShowForm){
+export function ClickSingUp(){
     setShowForm(true);
     console.log("Cadastrar time");
 }
@@ -9,25 +9,10 @@ export function ClickSingUp(setShowForm){
 export function ClickStart(){
 
     console.log("Iniciar Campeonato");
-    const rowsCount = (tableBody) => {
-        const lineCount = tableBody.rows.length;
-        const click = () =>{
-            if ( lineCount < 8 ) {
-                console.log("nao pode");
-            }; if (lineCount > 16) {
-                const myTable= document.getElementById("#myTable");
-                myTable.deleteRow(lineCount - 1)
-                console.log("NAO")
-            }
-        }
-    
-        click();
-        rowsCount(tableBody);
-    }
 
 }
 
-export function ClickAdmin(tableBody){
+export function ClickAdmin(){
 
     console.log("Administrar Campeonato");
 
@@ -102,14 +87,13 @@ export function Inicialize(){
                     <table id="myTable" className={styles.table}>
                     <thead>
                         <tr>
-                            <th className={styles.tab}>Nome do Time</th>
-                            <th className={styles.tab}>Grito de Guerra</th>
-                            <th className={styles.tab}>Ano de fundação</th>
+                            <th >Nome do Time</th>
+                            <th >Grito de Guerra</th>
+                            <th >Ano de fundação</th>
                         </tr>
                     </thead>
                     <tbody id="tableClick">
-                    
-                    </tbody>
+                    </tbody> 
                 </table>   
                 </div>
             </div>

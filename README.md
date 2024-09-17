@@ -5,9 +5,9 @@ Este projeto seria uma aplicação web em JavaScript, com as dependências React
 
 ## Descrição
 
-A principal funcionalidade é imprimir um formulário de cadastro, onde seus dados serão mostrados em uma tabela de organização. A tabela permite a exclusão dos dados, número máximo e mínimo de linhas. Ao chamamento do início do Campeonato é verificado se há um número válido de times. 
+A principal funcionalidade é imprimir um formulário de cadastro, onde seus dados serão mostrados em uma tabela de organização. A tabela permite a exclusão dos dados, número máximo e mínimo de linhas. Ao chamamento do início do Campeonato é verificado se há um número válido de times. Está em andamento a configuração dos dois últimos botoês e suas funcionalidades.
 
-##Status
+## Status
 - Em andamento.
 
 ## Funcionalidades principais:

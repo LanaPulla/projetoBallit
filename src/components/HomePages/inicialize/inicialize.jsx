@@ -10,13 +10,17 @@ export function ClickStart(){
         const line = document.querySelector("#tableClick");
         const lineCount = line.rows.length;
 
-        if (lineCount < 8){
+        if (lineCount < 8 && lineCount % 2 ==0){
             alert("São necessários no mínimo 8 times para iniciar");
         };
         
         if (lineCount > 16 ){
             alert("São necessários no máximo 16 times para iniciar");
         };
+        if (lineCount % 2 !== 0){
+            alert("A quantidade de times precisa ser par");
+
+        }
 }  
 
 
@@ -31,11 +35,9 @@ export function ClickAdmin(){
 export function Inicialize(){
     const [showForm, setShowForm] = useState(false);
 
-    
-
         const formClick = (event) =>{
             event.preventDefault();
-            
+        
 
             const form = document.querySelector("#form-user-create");
 
@@ -46,32 +48,32 @@ export function Inicialize(){
             const tableBody = document.querySelector("#tableClick");
 
             const lineCount = tableBody.rows.length;
-            
-            const insertLine = tableBody.insertRow();
-            const colum1 = insertLine.insertCell(0);
-            const colum2 = insertLine.insertCell(1);
-            const colum3 = insertLine.insertCell(2);
 
-            colum1.textContent = teamName;
-            colum2.textContent = teamChant;
-            colum3.textContent = teamYear;
+                if (lineCount < 16){
+                const insertLine = tableBody.insertRow();
+                const colum1 = insertLine.insertCell(0);
+                const colum2 = insertLine.insertCell(1);
+                const colum3 = insertLine.insertCell(2);
 
-            form.reset();
+                colum1.textContent = teamName;
+                colum2.textContent = teamChant;
+                colum3.textContent = teamYear;
+                } else {
+                    alert("São necessários no máximo 16 times para iniciar")
+                }
+                form.reset();
             /*console.log("Número de linhas na tabela:", tableBody.rows.length);*/
     
             }
 
-           function lineDelete(e) {
-                e.preventDefault();
-
+           function lineDelete() {
                 const line = document.querySelector("#tableClick");
                 const lineCount = line.rows.length;
                 if (lineCount > 0){
                     line.deleteRow(lineCount - 1);
-                }
-                
+                }     
         };
-
+           
         
 
     return (
@@ -106,7 +108,7 @@ export function Inicialize(){
                         <input type="text" required id="exampleInputTeamChant" name="teamchant" />
                         <label htmlFor="exampleInputYear">Ano de fundação</label>
                         <input type="text" required id="exampleInputYear" name="year" />
-                        <button type="submit" >Enviar</button>
+                        <button type="submit" >Adicionar</button>
                         <button type="submit" id ="editButton" onClick={lineDelete}>Excluir</button>
                     </form>   
                     

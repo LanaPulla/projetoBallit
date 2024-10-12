@@ -22,7 +22,7 @@ Na aplicação, os botões no código ainda precisam ser implementados. O segund
 - NodeJS (a ser implementado).
 
 ## Interface Home
-![alt text](home.png)
+![alt text](img/home.png)
 
 ## Interface Table
 ![alt text](img/table2.png)

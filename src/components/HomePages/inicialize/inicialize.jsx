@@ -98,12 +98,34 @@ export function Inicialize() {
             });
     };
 
+    const handleDelete = (teamName) => {
+        fetch(`http://localhost:3002/api/teams/${teamName}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Falha ao excluir o time.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Success:', data);
+            // Atualiza o estado dos times após a exclusão
+            setTeams(teams.filter(team => team.name !== teamName));
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    };
+    
+
     function lineDelete() {
         const lineCount = teams.length;
         if (lineCount > 0) {
-            // Remove o último time do array de times
-            const updatedTeams = teams.slice(0, -1);
-            setTeams(updatedTeams);
+            const lastTeam = teams[lineCount - 1].name; // Pega o nome do último time
+
+            // Chama a função de exclusão do backend
+            handleDelete(lastTeam);
         }
     }
 
@@ -145,6 +167,7 @@ export function Inicialize() {
                                     <th>Nome do Time</th>
                                     <th>Grito de Guerra</th>
                                     <th>Ano de fundação</th>
+                                    <th>Ações</th>
                                 </tr>
                             </thead>
                             <tbody id="tableClick">
@@ -153,6 +176,9 @@ export function Inicialize() {
                                         <td>{team.name}</td>
                                         <td>{team.chant}</td>
                                         <td>{team.year}</td>
+                                        <td>
+                                            <button onClick={() => handleDelete(team.name)}>Excluir</button>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -163,4 +189,5 @@ export function Inicialize() {
         </div>
     );
 }
+
 

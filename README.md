@@ -19,10 +19,13 @@ Na aplicação, os botões no código ainda precisam ser implementados. O segund
 ## Tecnologias 
 - React;
 - Vite;
-- NodeJS (a ser implementado).
+- NodeJS.
 
 ## Interface Home
 ![alt text](img/home.png)
 
 ## Interface Table
 ![alt text](img/table2.png)
+
+## Avisos
+Esse projeto não foi desenvolvido exclusivamente pela desenvolvedora Lana. A criação da aplicação contou com o suporte de diversas ferramentas, como cursos, a colaboração de outros desenvolvedores, IA e recursos disponíveis para conhecimento público.

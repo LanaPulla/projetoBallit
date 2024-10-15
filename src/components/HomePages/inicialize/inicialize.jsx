@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Importa o hook de navegação
 import styles from './inicialize.module.css';
 
 export function ClickSingUp(setShowForm) {
@@ -6,30 +7,31 @@ export function ClickSingUp(setShowForm) {
     console.log("Cadastrar time");
 }
 
-export function ClickStart() {
-    const line = document.querySelector("#tableClick");
-    const lineCount = line.rows.length;
+export function ClickStart(teams, navigate) {
+    const lineCount = teams.length;
 
-    if (lineCount < 8 && lineCount % 2 === 0) {
+    if (lineCount < 8) {
         alert("São necessários no mínimo 8 times para iniciar");
-    }
-
-    if (lineCount > 16) {
+    } else if (lineCount > 16) {
         alert("São necessários no máximo 16 times para iniciar");
-    }
-
-    if (lineCount % 2 !== 0) {
+    } else if (lineCount % 2 !== 0) {
         alert("A quantidade de times precisa ser par");
+    } else {
+        // Se todas as condições forem atendidas, redireciona para a página do campeonato
+        navigate('/campeonato');
     }
 }
 
-export function ClickAdmin() {
+export function ClickAdmin(navigate) {
     console.log("Administrar Campeonato");
+    // Redireciona para a página de administração
+    navigate('/admin');
 }
 
 export function Inicialize() {
     const [showForm, setShowForm] = useState(false);
     const [teams, setTeams] = useState([]); // Guarda os times em um array de objetos
+    const navigate = useNavigate(); // Hook para redirecionar o usuário
 
     // Função para buscar os times do backend
     const fetchTeams = () => {
@@ -117,7 +119,6 @@ export function Inicialize() {
             console.error('Error:', error);
         });
     };
-    
 
     function lineDelete() {
         const lineCount = teams.length;
@@ -139,11 +140,11 @@ export function Inicialize() {
                 Cadastrar time
             </button>
 
-            <button className={styles.buttons} onClick={() => ClickStart()}>
+            <button className={styles.buttons} onClick={() => ClickStart(teams, navigate)}>
                 Iniciar Campeonato
             </button>
 
-            <button className={styles.buttons} onClick={ClickAdmin}>
+            <button className={styles.buttons} onClick={() => ClickAdmin(navigate)}>
                 Administrar Campeonato
             </button>
 
@@ -189,5 +190,6 @@ export function Inicialize() {
         </div>
     );
 }
+
 
 

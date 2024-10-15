@@ -1,0 +1,47 @@
+.h1 {
+    display: flex;
+    justify-content: center;
+}
+.p {
+    display: flex;
+    justify-content: center;
+}
+.tableContainer {
+    width: 30%;
+    max-height: 400px;
+    margin: 40px; 
+    
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 50px; 
+}
+
+.table th, .table td {
+    padding: 5px;
+    text-align: left;
+    border: 1px solid var(--white-color);
+    background-color: var(--ligthPurple-color);
+   
+
+}
+
+.table td {
+
+    background-color: var(--ligthPurple-color);
+
+}
+.button {
+    color: var(--background-color);
+    border-radius: 12px;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border: none;
+    font-weight: 450;
+    margin: 5px;
+    margin-top: 150px;
+    margin-left: 250px;
+}

@@ -120,15 +120,6 @@ export function Inicialize() {
         });
     };
 
-    function lineDelete() {
-        const lineCount = teams.length;
-        if (lineCount > 0) {
-            const lastTeam = teams[lineCount - 1].name; // Pega o nome do último time
-
-            // Chama a função de exclusão do backend
-            handleDelete(lastTeam);
-        }
-    }
 
     return (
         <div className={styles.container}>
@@ -158,7 +149,7 @@ export function Inicialize() {
                         <label htmlFor="exampleInputYear">Ano de fundação</label>
                         <input type="text" required id="exampleInputYear" name="year" />
                         <button type="submit">Adicionar</button>
-                        <button type="button" onClick={lineDelete}>Excluir</button>
+
                     </form>
 
                     <div className={styles.tableContainer}>
@@ -187,6 +178,7 @@ export function Inicialize() {
                     </div>
                 </div>
             )}
+           
         </div>
     );
 }

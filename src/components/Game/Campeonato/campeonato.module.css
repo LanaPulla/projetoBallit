@@ -40,3 +40,14 @@
     border: none;
     margin: 5px;
 }
+.input{
+    color: var(--background-color);
+    border-radius: 12px;
+    border: none;
+}
+.label{
+    margin:7px;
+}
+
+
+

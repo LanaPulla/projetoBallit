@@ -10,12 +10,18 @@ const __dirname = path.dirname(__filename);
 const filePath = path.resolve(__dirname, 'points.json');
 
 // Função para ler os pontos do arquivo
-function readpointsFromFile() {
+function readPointsFromFile() {
     if (!fs.existsSync(filePath)) {
         return [];
     }
-    const data = fs.readFileSync(filePath);
-    return JSON.parse(data);
+    try {
+        const data = fs.readFileSync(filePath);
+        const points = JSON.parse(data);
+        return points.filter(point => point.faltas); // Filtra entradas vazias
+    } catch (error) {
+        console.error("Erro ao ler o arquivo JSON:", error);
+        return [];
+    }
 }
 
 // Função para salvar os pontos no arquivo
@@ -23,34 +29,57 @@ function writePointsToFile(points) {
     fs.writeFileSync(filePath, JSON.stringify(points, null, 2));
 }
 
-// Rota POST para adicionar novos pontos
 router.post('/', (req, res) => {
-    const { pontos, faltas } = req.body;
-    const points = readpointsFromFile();
+    try {
+        const { faltas } = req.body;
 
-    const newPoints = { pontos, faltas };
-    points.push(newPoints);
+        // Verifica se faltas está presente
+        if (!faltas) {
+            return res.status(400).json({ message: 'Faltas não podem ser vazias.' });
+        }
 
-    writePointsToFile(points);
-    res.status(201).json({ message: 'Pontos adicionados com sucesso!' });
+        const points = readPointsFromFile();
+
+        // Cria um novo ponto com um ID único
+        const newPoints = { id: Date.now(), faltas }; 
+        points.push(newPoints);
+        
+        // Salva os pontos atualizados no arquivo
+        writePointsToFile(points);
+
+        res.status(201).json({ message: 'Pontos adicionados com sucesso!', point: newPoints });
+    } catch (error) {
+        console.error("Erro ao adicionar pontos:", error);
+        res.status(500).json({ message: 'Erro ao adicionar pontos' });
+    }
 });
 
-// Rota DELETE para excluir pontos
-router.delete('/:pontos', (req, res) => {
-    const teamPontos = req.params.pontos;
-    const points = readpointsFromFile();
+router.delete('/:id', (req, res) => {
+    try {
+        const pointId = Number(req.params.id); // Converte o ID para número
+        console.log(`Tentando excluir ponto com ID: ${pointId}`);
+        const points = readPointsFromFile();
 
-    // Filtra os pontos, excluindo o ponto com o nome especificado
-    const updatedPontos = points.filter(points => points.pontos !== teamPontos);
+        // Verifica se o ponto existe antes de tentar excluir
+        const pointExists = points.some(point => point.id === pointId);
+        if (!pointExists) {
+            return res.status(404).json({ message: 'Ponto não encontrado.' });
+        }
 
-    // Salva as alterações no arquivo
-    writePointsToFile(updatedPontos);
-    res.status(200).json({ message: 'Time excluído com sucesso' });
+        const updatedPoints = points.filter(point => point.id !== pointId);
+        writePointsToFile(updatedPoints);
+
+        res.status(200).json({ message: 'Ponto excluído com sucesso' });
+    } catch (error) {
+        console.error('Erro ao excluir ponto:', error);
+        res.status(500).json({ message: 'Erro ao excluir ponto' });
+    }
 });
 
-// Rota GET para listar todos os pontos
+
+
 router.get('/', (req, res) => {
-    const points = readpointsFromFile();
+    const points = readPointsFromFile();
     res.json(points);
 });
 

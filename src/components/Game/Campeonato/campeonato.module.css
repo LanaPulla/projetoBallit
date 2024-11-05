@@ -2,15 +2,19 @@
     display: flex;
     justify-content: center;
 }
+
 .p {
     display: flex;
     justify-content: center;
 }
+
 .tableContainer {
     width: 30%;
+    height: 80px; /* Altura fixa */
     max-height: 400px;
     margin: 40px; 
-    
+    margin-left: 100px;
+
 }
 
 .table {
@@ -33,6 +37,7 @@
     background-color: var(--ligthPurple-color);
 
 }
+
 .button {
     color: var(--background-color);
     border-radius: 12px;
@@ -40,13 +45,39 @@
     border: none;
     margin: 5px;
 }
+
 .input{
     color: var(--background-color);
     border-radius: 12px;
     border: none;
+    padding-left: 6px;
 }
+
 .label{
     margin:7px;
+}
+
+.winnerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--ligthPurple-color);
+    padding: 80px;
+    border-radius: 12px;
+    font-size: 1.2em;
+    width: 200px; /* Largura fixa */
+    height: 80px; /* Altura fixa */
+    margin-left: 900px;
+    margin-top: 200px;;
+}
+
+.footer {
+    padding: 80px;
+    font-size: 20px;
+    text-align: center; /* Centraliza o texto no footer */
+    position: relative; /* Para evitar que o footer fique fixo */
+    width: 100%; /* Para garantir que o footer ocupe a largura total */
+    bottom: 0; /* Para alinhar o footer na parte inferior da página */
 }
 
 

@@ -52,7 +52,7 @@ export function Campeonato() {
         };
 
         setPontos([...pontos, newPoints]);
-        sendPointsToBackend(newPoints);
+        /*sendPointsToBackend(newPoints);*/
 
         event.target.reset();
     };
@@ -75,73 +75,70 @@ export function Campeonato() {
         }
     };
 
-    return (
-        <div>
-            <h1 className={styles.h1}>Campeonato Iniciado!</h1>
-            <p className={styles.p}>Esta é a página do campeonato onde os times participarão.</p>
-
-            <div className={styles.tableContainer}>
-                <table className={styles.table}>
-                    <thead>
-                        <tr>
-                            <th>Nome do Time</th>
-                            <th>Grito de Guerra</th>
-                            <th>Ano de Fundação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {teams.map((team, index) => (
-                            <tr key={index}>
-                                <td>{team.name}</td>
-                                <td>{team.chant}</td>
-                                <td>{team.year}</td>
+        return (
+            <div className={styles.mainContainer}>
+                <div className={styles.tableContainer}>
+                    <h1 className={styles.h1}>Campeonato Iniciado!</h1>
+                    <p className={styles.p}>Esta é a página do campeonato onde os times participarão.</p>
+        
+                    <table className={styles.table}>
+                        <thead>
+                            <tr>
+                                <th>Nome do Time</th>
+                                <th>Grito de Guerra</th>
+                                <th>Ano de Fundação</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-
-                <form role="form" id="form-user-create" onSubmit={handleAddPoints}>
-                    <label htmlFor="exampleInputFaltas" className={styles.label}>Faltas</label>
-                    <input type="text" id="exampleInputFaltas" name="teamfaltas"className={styles.input} />
-                    <button type="submit" className={styles.button}>Adicionar</button>
-                    <button type="button" className={styles.button} onClick={handleSelectTeams}>Sortear times</button>
-                    <button type="button" className={styles.button} onClick={handleCalculateWinner}>Calcular Vencedor</button>
-                </form>
-
-                <table className={styles.table}>
-                    <thead>
-                        <tr>
-                            <th>Time</th>
-                            <th>Pontos</th>
-                            <th>Faltas</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {selectedTeams.map((team, index) => (
-                            <tr key={index}>
-                                <td>{team.name}</td>
-                                <td>50</td>
-                                <td>{pontos[index]?.faltas || ''}</td>
-                                <td>{team.total || ''}</td>
+                        </thead>
+                        <tbody>
+                            {teams.map((team, index) => (
+                                <tr key={index}>
+                                    <td>{team.name}</td>
+                                    <td>{team.chant}</td>
+                                    <td>{team.year}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    
+                    <form role="form" id="form-user-create" onSubmit={handleAddPoints}>
+                        <label htmlFor="exampleInputFaltas" className={styles.label}>Faltas</label>
+                        <input type="text" id="exampleInputFaltas" name="teamfaltas" className={styles.input} />
+                        <button type="submit" className={styles.button}>Adicionar</button>
+                        <button type="button" className={styles.button} onClick={handleSelectTeams}>Sortear times</button>
+                        <button type="button" className={styles.button} onClick={handleCalculateWinner}>Calcular Vencedor</button>
+                    </form>
+        
+                    <table className={styles.table}>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Pontos</th>
+                                <th>Faltas</th>
+                                <th>Total</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-
-            {winner && (
-                <div className={styles.winnerContainer}>
-                    <p>O time {winner.name} é o ganhador!</p>
+                        </thead>
+                        <tbody>
+                            {selectedTeams.map((team, index) => (
+                                <tr key={index}>
+                                    <td>{team.name}</td>
+                                    <td>50</td>
+                                    <td>{pontos[index]?.faltas || ''}</td>
+                                    <td>{team.total || ''}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <footer className={styles.footer}> Desenvolvido por Lana Pulla</footer>
                 </div>
-            )}
-            <div>
-    {/* Conteúdo existente, incluindo tabelas e formulário */}
-
-    <footer className={styles.footer}>
-        <p>Desenvolvido por Lana • Todos os direitos reservados</p>
-    </footer>
-</div>
-        </div>
-    );
+                {winner && (
+                    <div className={styles.winnerContainer}>
+                        <p>O time {winner.name} é o ganhador!</p>
+                    </div>
+                )}
+                
+    
+            </div>
+            
+        );
+        
 }

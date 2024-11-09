@@ -135,9 +135,6 @@ export function Inicialize() {
                 Iniciar Campeonato
             </button>
 
-            <button className={styles.buttons} onClick={() => ClickAdmin(navigate)}>
-                Administrar Campeonato
-            </button>
 
             {showForm && (
                 <div className={styles.singUp}>
@@ -176,9 +173,12 @@ export function Inicialize() {
                             </tbody>
                         </table>
                     </div>
+                    
                 </div>
             )}
-           
+            <div className={styles.footer}>
+            <p>Desenvolvido por <a href="https://www.linkedin.com/in/lana-pulla-9b6845284/" target="_blank"> Lana Pulla</a></p>
+            </div>
         </div>
     );
 }

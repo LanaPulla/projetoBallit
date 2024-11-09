@@ -25,10 +25,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 50vh; 
-    padding: 20px;
+    min-height: 100vh; 
     box-sizing: border-box;
-   
+    flex: 1;
 }
 
 .singUp{
@@ -74,7 +73,7 @@
 .tableContainer {
     width: 100%;
     max-height: 400px; 
-    
+    margin-bottom: 100px;
 }
 
 .table {
@@ -97,6 +96,18 @@
     background-color: var(--ligthPurple-color);
 
 }
+
+.footer {
+    background-color: var(--ligth-color);
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    margin-top: 100px;;
+    width: 100%;
+    height: 80px;
+    margin-top: auto; 
+  }
 
 
 

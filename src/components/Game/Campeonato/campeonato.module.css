@@ -9,26 +9,24 @@
 }
 
 .tableContainer {
-    width: 30%;
-    height: 80px; /* Altura fixa */
-    max-height: 400px;
     margin: 40px; 
-    margin-left: 100px;
-
+  
 }
 
 .table {
+    width: 30%;
+    height: 80px; 
+    max-height: 400px;
     border-collapse: collapse;
-    width: 100%;
     margin-top: 50px; 
+    
 }
 
 .table th, .table td {
     padding: 5px;
     text-align: left;
     border: 1px solid var(--white-color);
-    background-color: var(--ligthPurple-color);
-   
+    background-color: var(--ligthPurple-color);     
 
 }
 
@@ -66,19 +64,25 @@
     border-radius: 12px;
     font-size: 1.2em;
     width: 200px; /* Largura fixa */
-    height: 80px; /* Altura fixa */
+    height: 100px; /* Altura fixa */
     margin-left: 900px;
-    margin-top: 200px;;
 }
 
-.footer {
-    padding: 80px;
-    font-size: 20px;
-    text-align: center; /* Centraliza o texto no footer */
-    position: relative; /* Para evitar que o footer fique fixo */
-    width: 100%; /* Para garantir que o footer ocupe a largura total */
-    bottom: 0; /* Para alinhar o footer na parte inferior da página */
-}
+.mainContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 
-
-
+    
+ .footer {
+        margin-top: 50px;
+        height: 50px;
+        background-color: var(--ligth-color);
+        color: #fff;
+        text-align:center;
+        line-height: 50px;
+        font-size: 20px;
+        height: 80px; 
+      }
+   

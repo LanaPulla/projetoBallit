@@ -75,70 +75,74 @@ export function Campeonato() {
         }
     };
 
-        return (
-            <div className={styles.mainContainer}>
-                <div className={styles.tableContainer}>
-                    <h1 className={styles.h1}>Campeonato Iniciado!</h1>
-                    <p className={styles.p}>Esta é a página do campeonato onde os times participarão.</p>
-        
-                    <table className={styles.table}>
-                        <thead>
-                            <tr>
-                                <th>Nome do Time</th>
-                                <th>Grito de Guerra</th>
-                                <th>Ano de Fundação</th>
+    return (
+        <div className={styles.mainContainer}>
+            <div className={styles.tableContainer}>
+                <h1 className={styles.h1}>Campeonato Iniciado!</h1>
+                <p className={styles.p}>Esta é a página do campeonato onde os times participarão.</p>
+    
+                <table className={styles.table}>
+                    <thead>
+                        <tr>
+                            <th>Nome do Time</th>
+                            <th>Grito de Guerra</th>
+                            <th>Ano de Fundação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {teams.map((team, index) => (
+                            <tr key={index}>
+                                <td>{team.name}</td>
+                                <td>{team.chant}</td>
+                                <td>{team.year}</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {teams.map((team, index) => (
-                                <tr key={index}>
-                                    <td>{team.name}</td>
-                                    <td>{team.chant}</td>
-                                    <td>{team.year}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    
-                    <form role="form" id="form-user-create" onSubmit={handleAddPoints}>
-                        <label htmlFor="exampleInputFaltas" className={styles.label}>Faltas</label>
-                        <input type="text" id="exampleInputFaltas" name="teamfaltas" className={styles.input} />
-                        <button type="submit" className={styles.button}>Adicionar</button>
-                        <button type="button" className={styles.button} onClick={handleSelectTeams}>Sortear times</button>
-                        <button type="button" className={styles.button} onClick={handleCalculateWinner}>Calcular Vencedor</button>
-                    </form>
-        
-                    <table className={styles.table}>
-                        <thead>
-                            <tr>
-                                <th>Time</th>
-                                <th>Pontos</th>
-                                <th>Faltas</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {selectedTeams.map((team, index) => (
-                                <tr key={index}>
-                                    <td>{team.name}</td>
-                                    <td>50</td>
-                                    <td>{pontos[index]?.faltas || ''}</td>
-                                    <td>{team.total || ''}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    <footer className={styles.footer}> Desenvolvido por Lana Pulla</footer>
+                        ))}
+                    </tbody>
+                </table>
+
+                    {winner && (
+                <div className={styles.winnerContainer}>
+                    <p>O time {winner.name} é o ganhador!</p>
                 </div>
-                {winner && (
-                    <div className={styles.winnerContainer}>
-                        <p>O time {winner.name} é o ganhador!</p>
-                    </div>
                 )}
                 
-    
-            </div>
-            
-        );
+                <form role="form" id="form-user-create" onSubmit={handleAddPoints}>
+                    <label htmlFor="exampleInputFaltas" className={styles.label}>Faltas</label>
+                    <input type="text" id="exampleInputFaltas" name="teamfaltas" className={styles.input} />
+                    <button type="submit" className={styles.button}>Adicionar</button>
+                    <button type="button" className={styles.button} onClick={handleSelectTeams}>Sortear times</button>
+                    <button type="button" className={styles.button} onClick={handleCalculateWinner}>Calcular Vencedor</button>
+                </form>
+                
+              
+                <table className={styles.table}>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Pontos</th>
+                        <th>Faltas</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {selectedTeams.map((team, index) => (
+                        <tr key={index}>
+                            <td>{team.name}</td>
+                            <td>50</td>
+                            <td>{pontos[index]?.faltas || ''}</td>
+                            <td>{team.total || ''}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+
+
+        <div className={styles.footer}>
+            <p>Desenvolvido por <a href="https://www.linkedin.com/in/lana-pulla-9b6845284/" target="_blank"> Lana Pulla</a></p>
+        </div>
+    </div>
+);
         
 }
